@@ -1,8 +1,4 @@
-export type QuizQuestion = {
-  id: string;
-  question: string;
-  validate: (answer: string) => boolean;
-};
+import type { QuizAnswer } from "@/types/site-config";
 
 function normalize(value: string): string {
   return value
@@ -53,31 +49,28 @@ function matchesDayMonth(answer: string, day: number, month: number): boolean {
   return d === day && m === month;
 }
 
-export const QUIZ_STORAGE_KEY = "ana-livia-quiz-unlocked";
-
 function matchesName(answer: string, name: string): boolean {
   return normalize(answer) === normalize(name);
 }
 
-export const quizQuestions: QuizQuestion[] = [
-  {
-    id: "his-name",
-    question: "Qual é o nome de quem fez este presente para você?",
-    validate: (answer) => matchesName(answer, "luiz"),
-  },
-  {
-    id: "luiz-birthday",
-    question: "Qual é o aniversário do Luiz?",
-    validate: (answer) => matchesFullDate(answer, 7, 11, 2008),
-  },
-  {
-    id: "ana-birthday",
-    question: "Qual é o aniversário da Ana Lívia?",
-    validate: (answer) => matchesFullDate(answer, 14, 2, 2009),
-  },
-  {
-    id: "together-date",
-    question: "Em que data vocês ficaram pela primeira vez?",
-    validate: (answer) => matchesDayMonth(answer, 5, 3),
-  },
-];
+export function validateQuizAnswer(answer: string, expected: QuizAnswer): boolean {
+  switch (expected.type) {
+    case "name":
+      return matchesName(answer, expected.value);
+    case "full-date":
+      return matchesFullDate(
+        answer,
+        expected.day,
+        expected.month,
+        expected.year
+      );
+    case "day-month":
+      return matchesDayMonth(answer, expected.day, expected.month);
+    default:
+      return false;
+  }
+}
+
+export function quizStorageKey(slug: string): string {
+  return `${slug}-quiz-unlocked`;
+}

@@ -4,49 +4,13 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSite } from "@/contexts/SiteContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const qualities = [
-  {
-    icon: "✦",
-    title: "Seu Sorriso",
-    description:
-      "Ilumina qualquer ambiente. É impossível olhar para você e não sentir que tudo vai ficar bem.",
-  },
-  {
-    icon: "♡",
-    title: "Sua Bondade",
-    description:
-      "Você cuida de todos ao redor com um coração enorme. Sua gentileza é contagiante e pura.",
-  },
-  {
-    icon: "☽",
-    title: "Sua Força",
-    description:
-      "Mesmo nos dias difíceis, você enfrenta tudo com coragem. Você me inspira a ser melhor.",
-  },
-  {
-    icon: "✧",
-    title: "Sua Risada",
-    description:
-      "A melhor música que já ouvi. Cada gargalhada sua é um presente que guardo no coração.",
-  },
-  {
-    icon: "❋",
-    title: "Sua Inteligência",
-    description:
-      "Conversar com você é descobrir novos universos. Sua mente brilhante me encanta.",
-  },
-  {
-    icon: "∞",
-    title: "Seu Amor",
-    description:
-      "O amor que você me dá é o tesouro mais precioso da minha vida. Eu te amo infinitamente.",
-  },
-];
-
 export default function QualitiesSection() {
+  const site = useSite();
+  const { qualities } = site;
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -74,22 +38,23 @@ export default function QualitiesSection() {
       ref={sectionRef}
       className="section-padding relative z-10"
     >
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
+      <motion.div className="mx-auto max-w-6xl">
+        <motion.div className="mb-16 text-center">
           <span className="text-sm font-medium tracking-[0.4em] uppercase text-gold/80">
-            Por que eu te amo
+            {qualities.sectionLabel}
           </span>
           <h2 className="mt-4 font-[family-name:var(--font-playfair)] text-4xl font-light text-white md:text-6xl">
-            Motivos <span className="gradient-text italic">Infinitos</span>
+            Motivos{" "}
+            <span className="gradient-text italic">{qualities.titleHighlight}</span>
           </h2>
-          <div className="mx-auto mt-6 h-px w-24 shimmer-border" />
-        </div>
+          <motion.div className="mx-auto mt-6 h-px w-24 shimmer-border" />
+        </motion.div>
 
-        <div
+        <motion.div
           ref={gridRef}
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {qualities.map((quality, i) => (
+          {qualities.items.map((quality, i) => (
             <motion.div
               key={quality.title}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
@@ -108,8 +73,8 @@ export default function QualitiesSection() {
               </span>
             </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

@@ -3,8 +3,11 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import { useSite } from "@/contexts/SiteContext";
 
 export default function Hero() {
+  const site = useSite();
+  const { hero, couple } = site;
   const subtitleRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -24,7 +27,7 @@ export default function Hero() {
       id="inicio"
       className="relative flex min-h-screen items-center justify-center px-6"
     >
-      <div className="relative z-10 mx-auto max-w-5xl text-center">
+      <motion.div className="relative z-10 mx-auto max-w-5xl text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -36,34 +39,32 @@ export default function Hero() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="mb-6 text-sm font-medium tracking-[0.4em] uppercase text-rose-light/80"
           >
-            Feito com amor, só para você
+            {hero.eyebrow}
           </motion.p>
 
           <h1 className="font-[family-name:var(--font-playfair)] text-6xl leading-[1.1] font-light tracking-tight text-white sm:text-7xl md:text-8xl lg:text-9xl">
-            <motion.span
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="block"
-            >
-              Ana
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="gradient-text block italic"
-            >
-              Lívia
-            </motion.span>
+            {couple.toNameLines.map((line, i) => (
+              <motion.span
+                key={line}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.3 + i * 0.2,
+                  duration: 1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className={`block ${i > 0 ? "gradient-text italic" : ""}`}
+              >
+                {line}
+              </motion.span>
+            ))}
           </h1>
 
           <p
             ref={subtitleRef}
             className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-white/50 md:text-xl"
           >
-            Você é a estrela mais brilhante do meu universo. Cada batida do
-            meu coração carrega seu nome.
+            {hero.subtitle}
           </p>
         </motion.div>
 
@@ -84,7 +85,7 @@ export default function Hero() {
             />
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

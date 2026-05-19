@@ -15,14 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Ana Lívia — Para Sempre",
-  description:
-    "Um universo feito só para você, Ana Lívia. Com todo o meu amor.",
-  openGraph: {
-    title: "Ana Lívia — Para Sempre",
-    description: "Um universo feito só para você, com todo o meu amor.",
-    type: "website",
-  },
+  title: "Presente de Amor",
+  description: "Um presente digital feito com carinho.",
 };
 
 export default function RootLayout({

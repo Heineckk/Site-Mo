@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import type { Photo } from "@/data/photos";
+import type { Photo } from "@/types/site-config";
 
 type PhotoCardProps = {
   photo: Photo;

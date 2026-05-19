@@ -14,7 +14,7 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-$repoName = "ana-livia"
+$repoName = "Site-Mo"
 
 # Renomeia branch para main (padrao do GitHub)
 git branch -M main 2>$null

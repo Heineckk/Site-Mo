@@ -1,0 +1,141 @@
+{
+  "slug": "ana-livia",
+  "meta": {
+    "title": "Ana Lívia — Para Sempre",
+    "description": "Um universo feito só para você, Ana Lívia. Com todo o meu amor."
+  },
+  "couple": {
+    "fromName": "Luiz",
+    "toName": "Ana Lívia",
+    "toNameLines": ["Ana", "Lívia"],
+    "footerTagline": "Para sempre & além"
+  },
+  "quiz": {
+    "questions": [
+      {
+        "id": "his-name",
+        "question": "Qual é o nome de quem fez este presente para você?",
+        "answer": { "type": "name", "value": "luiz" }
+      },
+      {
+        "id": "luiz-birthday",
+        "question": "Qual é o aniversário do Luiz?",
+        "answer": { "type": "full-date", "day": 7, "month": 11, "year": 2008 }
+      },
+      {
+        "id": "ana-birthday",
+        "question": "Qual é o aniversário da Ana Lívia?",
+        "answer": { "type": "full-date", "day": 14, "month": 2, "year": 2009 }
+      },
+      {
+        "id": "together-date",
+        "question": "Em que data vocês ficaram pela primeira vez?",
+        "answer": { "type": "day-month", "day": 5, "month": 3 }
+      }
+    ]
+  },
+  "quizGate": {
+    "eyebrow": "Um segredinho",
+    "titleLine1": "ama de verdade",
+    "titleLine2": "entra aqui",
+    "subtitle": "Responda com carinho — são coisas só nossas",
+    "successTitle": "Perfeito, meu amor!",
+    "successSubtitle": "Abrindo seu presente...",
+    "footerCredit": "Feito com amor pelo Luiz, para Ana Lívia"
+  },
+  "hero": {
+    "eyebrow": "Feito com amor, só para você",
+    "subtitle": "Você é a estrela mais brilhante do meu universo. Cada batida do meu coração carrega seu nome."
+  },
+  "story": {
+    "sectionLabel": "Capítulo Um",
+    "titleHighlight": "História",
+    "paragraphs": [
+      "Antes de você, eu não sabia que o amor podia ser tão profundo e tão leve ao mesmo tempo. Você chegou como um sussurro suave e transformou tudo em poesia.",
+      "Cada conversa nossa é um capítulo que eu quero reler para sempre. Cada risada sua ilumina dias inteiros. Cada olhar trocado me lembra que encontrei em você o meu lugar no mundo.",
+      "Ana Lívia, você não é apenas minha namorada — você é meu presente, meu futuro e a razão pela qual eu acredito em milagres."
+    ],
+    "quote": "Onde quer que você esteja, é onde eu quero estar."
+  },
+  "qualities": {
+    "sectionLabel": "Por que eu te amo",
+    "titleHighlight": "Infinitos",
+    "items": [
+      {
+        "icon": "✦",
+        "title": "Seu Sorriso",
+        "description": "Ilumina qualquer ambiente. É impossível olhar para você e não sentir que tudo vai ficar bem."
+      },
+      {
+        "icon": "♡",
+        "title": "Sua Bondade",
+        "description": "Você cuida de todos ao redor com um coração enorme. Sua gentileza é contagiante e pura."
+      },
+      {
+        "icon": "☽",
+        "title": "Sua Força",
+        "description": "Mesmo nos dias difíceis, você enfrenta tudo com coragem. Você me inspira a ser melhor."
+      },
+      {
+        "icon": "✧",
+        "title": "Sua Risada",
+        "description": "A melhor música que já ouvi. Cada gargalhada sua é um presente que guardo no coração."
+      },
+      {
+        "icon": "❋",
+        "title": "Sua Inteligência",
+        "description": "Conversar com você é descobrir novos universos. Sua mente brilhante me encanta."
+      },
+      {
+        "icon": "∞",
+        "title": "Seu Amor",
+        "description": "O amor que você me dá é o tesouro mais precioso da minha vida. Eu te amo infinitamente."
+      }
+    ]
+  },
+  "gallery": {
+    "sectionLabel": "Nossos Momentos",
+    "titleHighlight": "Nosso Amor",
+    "subtitle": "Clique em qualquer foto para ver em tela cheia.",
+    "photos": [
+      {
+        "src": "/photos/04-ana-flores.png",
+        "alt": "Ana Lívia segurando um lindo buquê de flores",
+        "title": "Minha Flor",
+        "caption": "O sorriso mais lindo do mundo, iluminado pelas flores que você merece.",
+        "featured": true
+      },
+      {
+        "src": "/photos/03-flores.png",
+        "alt": "Casal abraçado com buquê de rosas",
+        "title": "Nosso Buquê",
+        "caption": "Cada flor que te dei carrega um pedaço do meu coração."
+      },
+      {
+        "src": "/photos/02-cafe.png",
+        "alt": "Casal em um café, momento descontraído",
+        "title": "Nossos Risos",
+        "caption": "Os melhores momentos são os simples, ao seu lado, sem pressa."
+      },
+      {
+        "src": "/photos/01-noite.png",
+        "alt": "Casal à noite, selfie romântica",
+        "title": "Nossas Noites",
+        "caption": "Sob as estrelas, cada noite ao seu lado é um sonho realizado."
+      }
+    ]
+  },
+  "letter": {
+    "sectionLabel": "De coração para coração",
+    "titleHighlight": "Amor",
+    "paragraphs": [
+      "Minha querida Ana Lívia,",
+      "Escrevo estas palavras com o coração transbordando de amor por você. Você entrou na minha vida como a luz mais bonita que eu já vi, e desde então, nada mais é igual.",
+      "Seu nome é a primeira coisa que penso ao acordar e a última antes de dormir. Você é minha paz nos dias turbulentos, minha alegria nos dias comuns e meu sonho nos dias quietos.",
+      "Prometo estar ao seu lado em cada capítulo da nossa história — nos dias de sol e nos de chuva, nas risadas e nas lágrimas, na calma e na tempestade.",
+      "Obrigado por ser exatamente quem você é. Obrigado por me escolher. Obrigado por existir.",
+      "Para sempre seu, bbzudo"
+    ],
+    "closing": "Com todo meu amor ♥"
+  }
+}

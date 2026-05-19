@@ -1,0 +1,4 @@
+# Formulário público; presentes personalizados só com link direto
+User-agent: *
+Allow: /formulario
+Disallow: /

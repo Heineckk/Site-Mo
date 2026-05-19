@@ -1,11 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useSite } from "@/contexts/SiteContext";
 
 export default function Footer() {
+  const { couple } = useSite();
+  const lines = couple.toNameLines;
+  const tagline = couple.footerTagline ?? "Para sempre & além";
+
   return (
     <footer className="relative z-10 border-t border-white/5 py-16">
-      <div className="mx-auto max-w-4xl px-6 text-center">
+      <motion.div className="mx-auto max-w-4xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -13,10 +18,19 @@ export default function Footer() {
           transition={{ duration: 0.8 }}
         >
           <p className="font-[family-name:var(--font-playfair)] text-3xl text-white md:text-4xl">
-            Ana <span className="gradient-text italic">Lívia</span>
+            {lines.map((line, i) => (
+              <span key={line}>
+                {i > 0 && " "}
+                {i === lines.length - 1 && lines.length > 1 ? (
+                  <span className="gradient-text italic">{line}</span>
+                ) : (
+                  line
+                )}
+              </span>
+            ))}
           </p>
           <p className="mt-4 text-sm tracking-[0.3em] uppercase text-white/30">
-            Para sempre &amp; além
+            {tagline}
           </p>
 
           <div className="mx-auto mt-8 flex items-center justify-center gap-4">
@@ -31,7 +45,7 @@ export default function Footer() {
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-rose/40" />
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

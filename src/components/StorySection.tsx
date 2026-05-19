@@ -4,10 +4,13 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSite } from "@/contexts/SiteContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function StorySection() {
+  const site = useSite();
+  const story = site.story;
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -47,42 +50,35 @@ export default function StorySection() {
       ref={sectionRef}
       className="section-padding relative z-10"
     >
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-16 text-center">
+      <motion.div className="mx-auto max-w-4xl">
+        <motion.div className="mb-16 text-center">
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-sm font-medium tracking-[0.4em] uppercase text-gold/80"
           >
-            Capítulo Um
+            {story.sectionLabel}
           </motion.span>
           <h2
             ref={titleRef}
             className="mt-4 font-[family-name:var(--font-playfair)] text-4xl font-light text-white md:text-6xl"
           >
-            Nossa <span className="gradient-text italic">História</span>
+            Nossa <span className="gradient-text italic">{story.titleHighlight}</span>
           </h2>
           <div className="mx-auto mt-6 h-px w-24 shimmer-border" />
-        </div>
+        </motion.div>
 
-        <div ref={textRef} className="space-y-8">
-          <p className="text-center text-lg leading-relaxed text-white/60 md:text-xl">
-            Antes de você, eu não sabia que o amor podia ser tão profundo e
-            tão leve ao mesmo tempo. Você chegou como um sussurro suave e
-            transformou tudo em poesia.
-          </p>
-          <p className="text-center text-lg leading-relaxed text-white/50 md:text-xl">
-            Cada conversa nossa é um capítulo que eu quero reler para sempre.
-            Cada risada sua ilumina dias inteiros. Cada olhar trocado me
-            lembra que encontrei em você o meu lugar no mundo.
-          </p>
-          <p className="text-center text-lg leading-relaxed text-white/50 md:text-xl">
-            Ana Lívia, você não é apenas minha namorada — você é meu
-            presente, meu futuro e a razão pela qual eu acredito em
-            milagres.
-          </p>
-        </div>
+        <motion.div ref={textRef} className="space-y-8">
+          {story.paragraphs.map((text) => (
+            <p
+              key={text.slice(0, 40)}
+              className="text-center text-lg leading-relaxed text-white/50 md:text-xl first:text-white/60"
+            >
+              {text}
+            </p>
+          ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -92,10 +88,10 @@ export default function StorySection() {
           className="glass glow-rose mx-auto mt-16 max-w-lg rounded-2xl p-8 text-center"
         >
           <p className="font-[family-name:var(--font-playfair)] text-2xl italic text-rose-light md:text-3xl">
-            &ldquo;Onde quer que você esteja, é onde eu quero estar.&rdquo;
+            &ldquo;{story.quote}&rdquo;
           </p>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

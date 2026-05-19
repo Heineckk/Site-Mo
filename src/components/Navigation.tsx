@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSite } from "@/contexts/SiteContext";
 
 const links = [
   { href: "#inicio", label: "Início" },
@@ -12,6 +13,8 @@ const links = [
 ];
 
 export default function Navigation() {
+  const { couple } = useSite();
+  const lines = couple.toNameLines;
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -32,12 +35,18 @@ export default function Navigation() {
           : "bg-transparent py-5"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
+      <motion.div className="mx-auto flex max-w-6xl items-center justify-between px-6">
         <a
           href="#inicio"
           className="font-[family-name:var(--font-playfair)] text-xl font-semibold tracking-wide text-white"
         >
-          Ana <span className="gradient-text">Lívia</span>
+          {lines[0]}
+          {lines.length > 1 && (
+            <>
+              {" "}
+              <span className="gradient-text">{lines.slice(1).join(" ")}</span>
+            </>
+          )}
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -69,7 +78,7 @@ export default function Navigation() {
             }`}
           />
         </button>
-      </div>
+      </motion.div>
 
       <AnimatePresence>
         {menuOpen && (

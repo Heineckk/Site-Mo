@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import type { Photo } from "@/data/photos";
+import type { Photo } from "@/types/site-config";
 
 type LightboxProps = {
   photo: Photo | null;
