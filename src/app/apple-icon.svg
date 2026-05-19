@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <rect width="180" height="180" rx="40" fill="#050508"/>
+  <ellipse cx="90" cy="62" rx="68" ry="56" fill="#ff6b9d" opacity="0.16"/>
+  <ellipse cx="124" cy="124" rx="46" ry="40" fill="#d4af37" opacity="0.1"/>
+  <path
+    fill="url(#heart)"
+    d="M90 142c-1.2 0-2.3-.6-3-1.6-1.4-1.8-46-36-46-71.5 0-19.2 15.6-34.8 34.8-34.8 10.2 0 19.4 4.4 25.8 11.4 6.4-7 15.6-11.4 25.8-11.4 19.2 0 34.8 15.6 34.8 34.8 0 35.2-44.4 69.4-46 71.2-.7 1-1.8 1.6-3 1.6z"
+  />
+  <path
+    fill="#f0d78c"
+    opacity="0.95"
+    d="M130 50l3.1 6.3 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3 1.2-6.9-5-4.9 6.9-1 3.1-6.3z"
+  />
+  <defs>
+    <linearGradient id="heart" x1="38" y1="42" x2="142" y2="142" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffb3cc"/>
+      <stop offset="0.45" stop-color="#ff6b9d"/>
+      <stop offset="1" stop-color="#d4af37"/>
+    </linearGradient>
+  </defs>
+</svg>
