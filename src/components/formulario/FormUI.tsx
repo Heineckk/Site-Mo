@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import InstagramButton from "@/components/formulario/InstagramButton";
+import FormHeader from "@/components/formulario/FormHeader";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { formatPrice } from "@/lib/pricing";
 
@@ -40,7 +41,8 @@ export function FormPageShell({
   subtitle: string;
 }) {
   return (
-    <motion.div className="relative min-h-screen overflow-hidden bg-[#050508] px-4 py-12 md:py-16">
+    <motion.div className="relative min-h-screen overflow-hidden bg-[#050508] px-4 pb-12 pt-24 md:pb-16 md:pt-28">
+      <FormHeader />
       <motion.div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,107,157,0.14)_0%,transparent_55%)]" />
       <motion.div className="pointer-events-none absolute bottom-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gold/5 blur-[120px]" />
 
@@ -57,7 +59,7 @@ export function FormPageShell({
           </p>
         </header>
         {children}
-        <FormCredit showInstagram />
+        <FormCredit />
       </motion.div>
     </motion.div>
   );

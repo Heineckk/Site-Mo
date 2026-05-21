@@ -18,12 +18,30 @@ function InstagramLogo({ className = "h-5 w-5" }: { className?: string }) {
 
 export default function InstagramButton({
   className = "",
+  variant = "default",
 }: {
   className?: string;
+  variant?: "default" | "compact";
 }) {
   const openInstagram = () => {
     window.open(INSTAGRAM_URL, "_blank", "noopener,noreferrer");
   };
+
+  if (variant === "compact") {
+    return (
+      <button
+        type="button"
+        onClick={openInstagram}
+        className={`group inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/80 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white ${className}`}
+        aria-label="Abrir Instagram @dotti_303 em nova aba"
+      >
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white shadow-md shadow-[#ee2a7b]/20 transition group-hover:scale-105">
+          <InstagramLogo className="h-4 w-4" />
+        </span>
+        <span className="hidden font-medium sm:inline">@dotti_303</span>
+      </button>
+    );
+  }
 
   return (
     <button
