@@ -4,6 +4,29 @@ import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import InstagramButton from "@/components/formulario/InstagramButton";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { formatPrice } from "@/lib/pricing";
+
+export function FormPriceTag({
+  amount,
+  variant = "gold",
+}: {
+  amount: number;
+  variant?: "gold" | "rose";
+}) {
+  const price = formatPrice(amount);
+  const styles =
+    variant === "rose"
+      ? "border-rose/30 bg-rose/10 text-rose-light"
+      : "border-gold/30 bg-gold/10 text-gold-light";
+
+  return (
+    <span
+      className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium tabular-nums ${styles}`}
+    >
+      {price}
+    </span>
+  );
+}
 
 export function FormPageShell({
   children,

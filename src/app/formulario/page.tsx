@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FormModelIcon } from "@/components/formulario/FormIcons";
-import { FormCredit } from "@/components/formulario/FormUI";
+import { FormCredit, FormPriceTag } from "@/components/formulario/FormUI";
 import InstagramButton from "@/components/formulario/InstagramButton";
+import { PRICING } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Formulário de pedido",
@@ -35,7 +36,10 @@ export default function FormularioHomePage() {
             href="/formulario/namoro"
             className="glass group rounded-2xl p-8 text-left transition hover:border-rose/30 hover:shadow-lg hover:shadow-rose/10"
           >
-            <FormModelIcon variant="namoro" />
+            <div className="flex items-start justify-between gap-4">
+              <FormModelIcon variant="namoro" />
+              <FormPriceTag amount={PRICING.casal} variant="rose" />
+            </div>
             <h2 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl text-white">
               Casal
             </h2>
@@ -54,7 +58,10 @@ export default function FormularioHomePage() {
             href="/formulario/cartinha"
             className="glass group rounded-2xl p-8 text-left transition hover:border-gold/30 hover:shadow-lg hover:shadow-gold/10"
           >
-            <FormModelIcon variant="cartinha" />
+            <div className="flex items-start justify-between gap-4">
+              <FormModelIcon variant="cartinha" />
+              <FormPriceTag amount={PRICING.cartinha} />
+            </div>
             <h2 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl text-white">
               Carta
             </h2>
