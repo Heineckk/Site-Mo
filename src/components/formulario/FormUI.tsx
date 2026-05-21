@@ -63,7 +63,7 @@ export function FormPageShell({
   );
 }
 
-export function FormCredit({ showInstagram = true }: { showInstagram?: boolean }) {
+export function FormCredit({ showInstagram = false }: { showInstagram?: boolean }) {
   return (
     <footer className="mt-12 border-t border-white/5 pt-8">
       <p className="text-center text-xs tracking-wide text-white/25">

@@ -1,3 +1,5 @@
+"use client";
+
 const INSTAGRAM_URL =
   "https://www.instagram.com/dotti_303?igsh=MXNtdHB5a3Bud2x2NA==";
 
@@ -19,13 +21,16 @@ export default function InstagramButton({
 }: {
   className?: string;
 }) {
+  const openInstagram = () => {
+    window.open(INSTAGRAM_URL, "_blank", "noopener,noreferrer");
+  };
+
   return (
-    <a
-      href={INSTAGRAM_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+    <button
+      type="button"
+      onClick={openInstagram}
       className={`group mx-auto flex w-fit items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm text-white/80 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white ${className}`}
-      aria-label="Instagram da turma 303 do Dotti — abre em nova aba"
+      aria-label="Abrir Instagram @dotti_303 em nova aba"
     >
       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white shadow-lg shadow-[#ee2a7b]/20 transition group-hover:scale-105">
         <InstagramLogo className="h-[18px] w-[18px]" />
@@ -36,6 +41,6 @@ export default function InstagramButton({
         </span>
         <span className="font-medium">@dotti_303</span>
       </span>
-    </a>
+    </button>
   );
 }
