@@ -45,7 +45,7 @@ export default function NamoroForm() {
     <FormPageShell
       badge="Modelo casal"
       title="Formulário de pedido"
-      subtitle="Campos em branco nos opcionais serão ignorados. Ao terminar, copie o resumo e envie pelo WhatsApp."
+      subtitle="Campos em branco nos opcionais serão ignorados. Ao terminar, envie o resumo pelo WhatsApp."
     >
       <p className="mb-6 text-center text-xs text-white/30">
         <Link href="/formulario" className="hover:text-rose-light">

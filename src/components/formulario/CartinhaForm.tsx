@@ -48,7 +48,7 @@ export default function CartinhaForm() {
     <FormPageShell
       badge="Modelo carta"
       title="Formulário de pedido"
-      subtitle="Campos opcionais podem ficar em branco. Ao terminar, copie o resumo e envie pelo WhatsApp."
+      subtitle="Campos opcionais podem ficar em branco. Ao terminar, envie o resumo pelo WhatsApp."
     >
       <p className="mb-6 text-center text-xs text-white/30">
         <Link href="/formulario" className="hover:text-rose-light">

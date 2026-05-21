@@ -22,8 +22,8 @@ export default function FormularioHomePage() {
           Escolha o <span className="gradient-text italic">modelo</span>
         </h1>
         <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-white/45">
-          Preencha o formulário correspondente. Ao finalizar, copie o resumo e
-          envie pelo WhatsApp junto com as fotos, se houver.
+          Preencha o formulário correspondente. Ao finalizar, envie o resumo
+          pelo WhatsApp junto com as fotos, se houver.
         </p>
 
         <div className="mt-10 flex justify-center">
