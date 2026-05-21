@@ -57,7 +57,7 @@ export function FormPageShell({
           </p>
         </header>
         {children}
-        <FormCredit />
+        <FormCredit showInstagram />
       </motion.div>
     </motion.div>
   );

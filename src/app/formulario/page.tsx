@@ -24,7 +24,7 @@ export default function FormularioHomePage() {
       <ModelSelection />
 
       <div className="relative mx-auto max-w-6xl px-4 pb-16">
-        <FormCredit showInstagram={false} />
+        <FormCredit showInstagram />
       </div>
     </div>
   );
