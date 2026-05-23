@@ -103,6 +103,16 @@ export default function PhotoCard({
         />
 
         <div className="pointer-events-none absolute inset-0 z-[2] rounded-2xl border border-white/0 transition-colors duration-500 group-hover:border-rose/30" />
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] bg-gradient-to-t from-[#050508]/95 via-[#050508]/60 to-transparent px-5 pb-5 pt-20 sm:px-6 sm:pb-6">
+          <div className="mb-2 h-px w-12 bg-gradient-to-r from-rose/70 to-gold/50" />
+          <h3 className="font-[family-name:var(--font-playfair)] text-lg leading-snug text-white sm:text-xl">
+            {photo.title}
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-white/65">
+            {photo.caption}
+          </p>
+        </div>
       </motion.div>
     </motion.article>
   );

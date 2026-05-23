@@ -1,3 +1,10 @@
+/**
+ * Tipos e formatação dos formulários de pedido.
+ *
+ * NamoroFormData / CartinhaFormData = campos que o cliente preenche no site.
+ * formatNamoroSubmission / formatCartinhaSubmission = transformam em texto para WhatsApp.
+ */
+
 export type WriterMode = "cliente" | "nos";
 
 export type NamoroFormData = {
@@ -91,6 +98,10 @@ function block(title: string, body: string) {
   return `\n--- ${title} ---\n${body}`;
 }
 
+/**
+ * Formata os dados do formulário Casal em texto para enviar no WhatsApp.
+ * Campos vazios são ignorados. Esse texto é o que você lê ao receber o pedido.
+ */
 export function formatNamoroSubmission(d: NamoroFormData): string {
   let out = `PEDIDO — MODELO CASAL\n`;
 
@@ -162,6 +173,9 @@ export function formatNamoroSubmission(d: NamoroFormData): string {
   return out.trim();
 }
 
+/**
+ * Mesmo que formatNamoroSubmission, mas para o modelo Carta (amigos/alguém especial).
+ */
 export function formatCartinhaSubmission(d: CartinhaFormData): string {
   let out = `PEDIDO — MODELO CARTA\n`;
 

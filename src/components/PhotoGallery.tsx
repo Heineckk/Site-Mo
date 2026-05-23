@@ -77,7 +77,7 @@ export default function PhotoGallery() {
     <section
       id="fotos"
       ref={sectionRef}
-      className="section-padding relative z-20 overflow-hidden"
+      className="section-padding relative overflow-hidden"
     >
       <motion.div
         className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-rose/8 blur-[120px]"

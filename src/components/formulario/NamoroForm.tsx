@@ -18,6 +18,16 @@ import {
   type NamoroFormData,
 } from "@/lib/formulario-format";
 
+/**
+ * FORMULÁRIO MODELO CASAL (/formulario/namoro)
+ *
+ * O cliente preenche nomes, textos, quiz e fotos.
+ * Ao clicar "Finalizar", formatNamoroSubmission() gera um texto resumido.
+ * ResultModal mostra o resumo + botão para enviar pelo WhatsApp.
+ * CartinhaForm.tsx funciona igual, mas para o modelo Carta.
+ */
+
+/** Valores iniciais vazios — React guarda tudo aqui enquanto o cliente digita */
 const initial: NamoroFormData = {
   nomeDela: "",
   nomeDele: "",
@@ -36,6 +46,7 @@ export default function NamoroForm() {
   const set = <K extends keyof NamoroFormData>(key: K, value: NamoroFormData[K]) =>
     setD((prev) => ({ ...prev, [key]: value }));
 
+  /** Monta o texto do pedido e abre o modal com botão do WhatsApp */
   const handleSubmit = () => {
     setResult(formatNamoroSubmission(d));
     setShowResult(true);

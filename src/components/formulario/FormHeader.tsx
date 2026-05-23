@@ -3,6 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import InstagramButton from "@/components/formulario/InstagramButton";
 
+/**
+ * Cabeçalho fixo no topo — aparece em /formulario e nos formulários Casal/Carta.
+ * Instagram abre só ao clicar (botão, não link) para não redirecionar no app do Instagram.
+ * Ao rolar a página, o fundo glass aparece suavemente (só opacity, sem bug de animação).
+ */
 export default function FormHeader() {
   const [scrolled, setScrolled] = useState(false);
   const scrolledRef = useRef(false);

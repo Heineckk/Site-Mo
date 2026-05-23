@@ -60,6 +60,7 @@ export type SiteConfig = {
   qualities: {
     sectionLabel: string;
     titleHighlight: string;
+    subtitle?: string;
     items: QualityItem[];
   };
   gallery: {

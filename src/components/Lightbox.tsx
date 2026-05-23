@@ -112,6 +112,21 @@ export default function Lightbox({
                 priority
               />
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.5 }}
+              className="mt-6 text-center"
+            >
+              <div className="mx-auto mb-3 h-px w-12 bg-gradient-to-r from-transparent via-rose/50 to-transparent" />
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-white md:text-3xl">
+                {photo.title}
+              </h3>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/55 md:text-base">
+                {photo.caption}
+              </p>
+            </motion.div>
           </motion.div>
         </motion.div>
       )}

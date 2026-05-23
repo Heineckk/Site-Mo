@@ -1,0 +1,135 @@
+{
+  "slug": "joao-e-isabela",
+  "meta": {
+    "title": "João Antônio — Para Sempre",
+    "description": "Um presente de amor feito por Isabela para João Antônio, com toda a história, carinho e gratidão de quem ama de verdade."
+  },
+  "couple": {
+    "fromName": "Isabela",
+    "toName": "João Antônio",
+    "toNameLines": ["João", "Antônio"],
+    "footerTagline": "Para sempre & além"
+  },
+  "quiz": {
+    "questions": []
+  },
+  "quizGate": {
+    "eyebrow": "Um segredinho",
+    "titleLine1": "ama de verdade",
+    "titleLine2": "entra aqui",
+    "subtitle": "Responda com carinho — são coisas só nossas",
+    "successTitle": "Perfeito, meu amor!",
+    "successSubtitle": "Abrindo seu presente...",
+    "footerCredit": "Feito com amor pela Isabela, para João Antônio"
+  },
+  "hero": {
+    "eyebrow": "Feito com amor, só para você",
+    "subtitle": "Meu amor, escrevo esta carta a você de uma forma diferente do que estou acostumada a escrever."
+  },
+  "story": {
+    "sectionLabel": "Capítulo Um",
+    "titleHighlight": "História",
+    "paragraphs": [
+      "Tudo começou na véspera de Natal, onde uma data com símbolo familiar, união e partilha se conhecemos e ficamos juntos desde então, com isso, mostra o quanto construir isso com você.",
+      "Construir uma família (já temos), estar unidos em todos os momentos e principalmente nos mais difíceis, e a partilha, dividir os problemas e as alegrias.",
+      "Com todas as dificuldades que passamos até o momento, a mais difícil foi agora, quando envolveu saúde, e ter você ao meu lado, não fazendo eu desistir, me ajudando com esse tratamento e principalmente me dando coragem, me mostram e fazem eu ter a legítima certeza que quero passar o resto da minha vida ao seu lado."
+    ],
+    "quote": "Obrigada por cuidar de mim, mesmo quando eu não deixo"
+  },
+  "qualities": {
+    "sectionLabel": "Por que eu te amo",
+    "titleHighlight": "por Amar",
+    "subtitle": "10 motivos que fazem eu me apaixonar todos os dias por você!",
+    "items": [
+      {
+        "icon": "✦",
+        "title": "Seu Respeito",
+        "description": "O respeito que tem por mim"
+      },
+      {
+        "icon": "♡",
+        "title": "Carinho pela Minha Filha",
+        "description": "O carinho que tem pela minha filha"
+      },
+      {
+        "icon": "☽",
+        "title": "Sempre Dá um Jeito",
+        "description": "Que não importa o que eu peça, sempre dá um jeito de fazer"
+      },
+      {
+        "icon": "✧",
+        "title": "Suas Massagens",
+        "description": "Suas massagens"
+      },
+      {
+        "icon": "❋",
+        "title": "Nossas Risadas",
+        "description": "Nossos momentos de risadas juntos"
+      },
+      {
+        "icon": "✝",
+        "title": "Me Aproxima de Deus",
+        "description": "O quanto faz eu buscar a Deus e me aproxima mais dele"
+      },
+      {
+        "icon": "◈",
+        "title": "Como Nos Protege",
+        "description": "Como me protege e protege nossas filhas"
+      },
+      {
+        "icon": "◉",
+        "title": "Cuidado na Cozinha",
+        "description": "Quando cozinha para mim e cuida da minha saúde."
+      },
+      {
+        "icon": "★",
+        "title": "Seu Olhar",
+        "description": "A forma que me olha e me elogia todos os dias."
+      },
+      {
+        "icon": "∞",
+        "title": "Me Faz Sentir Amada",
+        "description": "E como faz eu me sentir amada e valorizada"
+      }
+    ]
+  },
+  "gallery": {
+    "sectionLabel": "Nossos Momentos",
+    "titleHighlight": "Nosso Amor",
+    "subtitle": "Clique em qualquer foto para ver em tela cheia.",
+    "photos": [
+      {
+        "src": "/sites/joao-e-isabela/photos/01.png",
+        "alt": "João e Isabela abraçados em um banco de parque",
+        "title": "Nossa Favorita",
+        "caption": "Uma das fotos nossas de que mais gosto — simples, sincera e cheia de amor.",
+        "featured": true
+      },
+      {
+        "src": "/sites/joao-e-isabela/photos/02.png",
+        "alt": "João e Isabela na academia",
+        "title": "Primeira Foto na Academia",
+        "caption": "O registro do nosso primeiro dia juntos na academia — o começo de muitos treinos lado a lado."
+      },
+      {
+        "src": "/sites/joao-e-isabela/photos/03.png",
+        "alt": "João, Isabela e as filhas em família",
+        "title": "Nossa Família",
+        "caption": "Nós, nossas filhas e tudo o que construímos juntos — minha maior felicidade."
+      }
+    ]
+  },
+  "letter": {
+    "sectionLabel": "De coração para coração",
+    "titleHighlight": "Amor",
+    "paragraphs": [
+      "Meu amor, escrevo esta carta a você de uma forma diferente do que estou acostumada a escrever.",
+      "Tudo começou na véspera de Natal, onde uma data com símbolo familiar, união e partilha se conhecemos e ficamos juntos desde então, com isso, mostra o quanto construir isso com você.",
+      "Construir uma família (já temos), estar unidos em todos os momentos e principalmente nos mais difíceis, e a partilha, dividir os problemas e as alegrias.",
+      "Com todas as dificuldades que passamos até o momento, a mais difícil foi agora, quando envolveu saúde, e ter você ao meu lado, não fazendo eu desistir, me ajudando com esse tratamento e principalmente me dando coragem, me mostram e fazem eu ter a legítima certeza que quero passar o resto da minha vida ao seu lado.",
+      "Obrigada por cuidar de mim, mesmo quando eu não deixo.",
+      "Amo você!"
+    ],
+    "closing": "Com todo meu amor ♥"
+  }
+}
