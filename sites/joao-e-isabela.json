@@ -43,53 +43,43 @@
     "items": [
       {
         "icon": "✦",
-        "title": "Seu Respeito",
-        "description": "O respeito que tem por mim"
+        "title": "O respeito que tem por mim"
       },
       {
         "icon": "♡",
-        "title": "Carinho pela Minha Filha",
-        "description": "O carinho que tem pela minha filha"
+        "title": "O carinho que tem pela minha filha"
       },
       {
         "icon": "☽",
-        "title": "Sempre Dá um Jeito",
-        "description": "Que não importa o que eu peça, sempre dá um jeito de fazer"
+        "title": "Que não importa o que eu peça, sempre dá um jeito de fazer"
       },
       {
         "icon": "✧",
-        "title": "Suas Massagens",
-        "description": "Suas massagens"
+        "title": "Suas massagens"
       },
       {
         "icon": "❋",
-        "title": "Nossas Risadas",
-        "description": "Nossos momentos de risadas juntos"
+        "title": "Nossos momentos de risadas juntos"
       },
       {
         "icon": "✝",
-        "title": "Me Aproxima de Deus",
-        "description": "O quanto faz eu buscar a Deus e me aproxima mais dele"
+        "title": "O quanto faz eu buscar a Deus e me aproxima mais dele"
       },
       {
         "icon": "◈",
-        "title": "Como Nos Protege",
-        "description": "Como me protege e protege nossas filhas"
+        "title": "Como me protege e protege nossas filhas"
       },
       {
         "icon": "◉",
-        "title": "Cuidado na Cozinha",
-        "description": "Quando cozinha para mim e cuida da minha saúde."
+        "title": "Quando cozinha para mim e cuida da minha saúde."
       },
       {
         "icon": "★",
-        "title": "Seu Olhar",
-        "description": "A forma que me olha e me elogia todos os dias."
+        "title": "A forma que me olha e me elogia todos os dias."
       },
       {
         "icon": "∞",
-        "title": "Me Faz Sentir Amada",
-        "description": "E como faz eu me sentir amada e valorizada"
+        "title": "E como faz eu me sentir amada e valorizada"
       }
     ]
   },

@@ -20,7 +20,7 @@ export type QuizQuestionConfig = {
 export type QualityItem = {
   icon: string;
   title: string;
-  description: string;
+  description?: string;
 };
 
 export type SiteConfig = {
