@@ -81,7 +81,7 @@ export default function QualitiesSection() {
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <div className="h-px flex-1 bg-gradient-to-r from-rose/25 via-rose/10 to-transparent" />
-                <span className="text-lg text-rose-light/70 transition-transform duration-500 group-hover:scale-110">
+                <span className="motive-icon text-lg text-rose-light/70 transition-transform duration-500 group-hover:scale-110">
                   {quality.icon}
                 </span>
               </div>

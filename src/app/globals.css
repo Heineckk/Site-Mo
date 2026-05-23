@@ -190,6 +190,13 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
+.motive-icon {
+  font-family: var(--font-playfair), serif;
+  font-variant-emoji: text;
+  -webkit-text-fill-color: currentColor;
+  line-height: 1;
+}
+
 .section-padding {
   padding: 6rem 1.5rem;
 }
