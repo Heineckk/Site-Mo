@@ -103,11 +103,42 @@ export default function PhotoGallery() {
           className={
             photos.length === 1
               ? "mx-auto max-w-2xl"
-              : "grid grid-cols-1 gap-5 md:grid-cols-12 md:gap-6"
+              : photos.length === 3
+                ? "grid grid-cols-1 gap-5 md:grid-cols-12 md:grid-rows-2 md:gap-6"
+                : "grid grid-cols-1 gap-5 md:grid-cols-12 md:gap-6"
           }
         >
           {photos.length === 1 ? (
             <PhotoCard photo={featured} index={0} size="large" onOpen={openPhoto} />
+          ) : photos.length === 3 && second && third ? (
+            <>
+              <div className="md:col-span-7 md:row-span-2">
+                <PhotoCard
+                  photo={featured}
+                  index={0}
+                  size="large"
+                  onOpen={openPhoto}
+                />
+              </div>
+
+              <div className="md:col-span-5">
+                <PhotoCard
+                  photo={second}
+                  index={1}
+                  size="medium"
+                  onOpen={openPhoto}
+                />
+              </div>
+
+              <div className="md:col-span-5">
+                <PhotoCard
+                  photo={third}
+                  index={2}
+                  size="medium"
+                  onOpen={openPhoto}
+                />
+              </div>
+            </>
           ) : (
             <>
               <div className="md:col-span-7 md:row-span-2">

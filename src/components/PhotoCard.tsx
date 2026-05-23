@@ -40,9 +40,9 @@ export default function PhotoCard({
   };
 
   const heights = {
-    large: "h-[480px] sm:h-[560px] md:h-[640px]",
-    medium: "h-[380px] md:h-[440px]",
-    small: "h-[280px] sm:h-[320px] md:h-[360px]",
+    large: "h-[420px] sm:h-[520px] md:h-[640px]",
+    medium: "h-[380px] sm:h-[420px] md:h-[440px]",
+    small: "h-[300px] sm:h-[340px] md:h-[360px]",
   };
 
   return (
