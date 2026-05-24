@@ -3,12 +3,15 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import EmojiDisplay from "@/components/EmojiDisplay";
+import { isEmojiOnly } from "@/lib/emoji-display";
 import { useSite } from "@/contexts/SiteContext";
 
 export default function Hero() {
   const site = useSite();
   const { hero, couple } = site;
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const subtitleRef = useRef<HTMLDivElement | HTMLParagraphElement>(null);
+  const emojiSubtitle = isEmojiOnly(hero.subtitle);
 
   useEffect(() => {
     if (subtitleRef.current) {
@@ -60,30 +63,18 @@ export default function Hero() {
             ))}
           </h1>
 
-          <p
-            ref={subtitleRef}
-            className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-white/50 md:text-xl"
-          >
-            {hero.subtitle}
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <motion.div className="flex flex-col items-center gap-3">
-            <span className="text-xs tracking-[0.3em] uppercase text-white/30">
-              Scroll
-            </span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="h-10 w-px bg-gradient-to-b from-rose/60 to-transparent"
-            />
-          </motion.div>
+          {emojiSubtitle ? (
+            <div ref={subtitleRef} className="mt-12 md:mt-14">
+              <EmojiDisplay text={hero.subtitle} delay={1.15} />
+            </div>
+          ) : (
+            <p
+              ref={subtitleRef}
+              className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-white/50 md:text-xl"
+            >
+              {hero.subtitle}
+            </p>
+          )}
         </motion.div>
       </motion.div>
     </section>

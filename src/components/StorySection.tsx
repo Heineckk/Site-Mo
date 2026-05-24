@@ -11,11 +11,14 @@ gsap.registerPlugin(ScrollTrigger);
 export default function StorySection() {
   const site = useSite();
   const story = site.story;
+  const isEmpty = !story.paragraphs.length && !story.quote?.trim();
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (isEmpty) return;
+
     const ctx = gsap.context(() => {
       gsap.from(titleRef.current, {
         scrollTrigger: {
@@ -42,7 +45,9 @@ export default function StorySection() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isEmpty]);
+
+  if (isEmpty) return null;
 
   return (
     <section

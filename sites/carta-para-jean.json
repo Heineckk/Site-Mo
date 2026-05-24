@@ -1,0 +1,55 @@
+{
+  "slug": "carta-para-jean",
+  "meta": {
+    "title": "Jean — Com carinho",
+    "description": "Um presente digital feito com carinho, só para você."
+  },
+  "couple": {
+    "fromName": "🌞",
+    "toName": "Jean",
+    "toNameLines": ["Jean"],
+    "footerTagline": "Com carinho"
+  },
+  "quiz": {
+    "questions": []
+  },
+  "quizGate": {
+    "eyebrow": "Um segredinho",
+    "titleLine1": "te conhece de verdade",
+    "titleLine2": "entra aqui",
+    "subtitle": "Responda com carinho — são coisas só nossas",
+    "successTitle": "Perfeito!",
+    "successSubtitle": "Abrindo seu presente...",
+    "footerCredit": "Feito com carinho por 🌞, para Jean"
+  },
+  "hero": {
+    "eyebrow": "Feito com carinho, só para você",
+    "subtitle": "🥢🍣"
+  },
+  "story": {
+    "sectionLabel": "Capítulo Um",
+    "titleHighlight": "História",
+    "paragraphs": [],
+    "quote": ""
+  },
+  "qualities": {
+    "sectionLabel": "Por que você é especial",
+    "titleHighlight": "Especiais",
+    "items": []
+  },
+  "gallery": {
+    "sectionLabel": "Momentos",
+    "titleHighlight": "Memórias",
+    "subtitle": "",
+    "photos": []
+  },
+  "letter": {
+    "sectionLabel": "De coração para coração",
+    "titleHighlight": "Carinho",
+    "paragraphs": [
+      "Você pode até fingir que não percebe certas coisas, mas alguns olhares entregam mais do que palavras.",
+      "🌞"
+    ],
+    "closing": "Com carinho ♥"
+  }
+}

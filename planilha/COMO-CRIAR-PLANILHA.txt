@@ -1,0 +1,36 @@
+CONTROLE DE PEDIDOS — DOTTI 303 (VERSÃO PROFISSIONAL)
+======================================================
+
+COMO CRIAR
+----------
+1. Abra: https://script.google.com
+2. Novo projeto → cole o código de "criar-planilha.gs" → Salvar
+3. Selecione a função: criarPlanilhaControlePedidos
+4. Clique em Executar ▶ (NÃO clique em Implantar)
+5. Autorize o Google
+6. Abra o link que aparecer no Registro de execução
+
+
+O QUE VEM NA PLANILHA
+---------------------
+
+📊 Dashboard (aba principal)
+   • Cards com totais: pedidos, aguardando, em produção, entregues
+   • Faturamento e ticket médio
+   • Gráficos automáticos por status e por modelo
+
+📋 Pedidos
+   • Cabeçalho com visual Dotti 303 (roxo/rosa)
+   • Menus dropdown em Status, Modelo, Pago?, etc.
+   • Cores automáticas por status
+   • Filtros no cabeçalho para buscar pedidos
+   • Linhas zebradas para leitura fácil
+
+📖 Como usar
+   • Instruções rápidas dentro da planilha
+
+
+DICA
+----
+Preencha cada novo pedido na aba «Pedidos», linha 4 em diante.
+O Dashboard atualiza sozinho.

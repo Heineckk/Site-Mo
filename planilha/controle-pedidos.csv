@@ -1,0 +1,3 @@
+Data do pedido,Status,Modelo,Cliente (quem pediu),Para quem é,Valor (R$),Pagamento,WhatsApp,Link do site (/slug),Textos por,Quiz,Fotos,Data entrega,Link enviado,Observações
+20/05/2026,Aguardando pagamento,Casal,João Silva,Maria,8,Não,(11) 99999-9999,maria-e-joao,Cliente,Sim,Sim,,,Exemplo — apague esta linha
+24/05/2026,Em produção,Carta,🌞,Jean,8,,,carta-para-jean,Cliente,Não,Não,,,Frase abertura: 🥢🍣

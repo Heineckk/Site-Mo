@@ -4,16 +4,30 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSite } from "@/contexts/SiteContext";
 
-const links = [
-  { href: "#inicio", label: "Início" },
-  { href: "#historia", label: "História" },
-  { href: "#motivos", label: "Motivos" },
-  { href: "#fotos", label: "Fotos" },
-  { href: "#carta", label: "Carta" },
-];
+const allLinks = [
+  { href: "#inicio", label: "Início", id: "inicio" },
+  { href: "#historia", label: "História", id: "historia" },
+  { href: "#motivos", label: "Motivos", id: "motivos" },
+  { href: "#fotos", label: "Fotos", id: "fotos" },
+  { href: "#carta", label: "Carta", id: "carta" },
+] as const;
 
 export default function Navigation() {
-  const { couple } = useSite();
+  const site = useSite();
+  const { couple } = site;
+
+  const links = allLinks.filter((link) => {
+    if (link.id === "historia") {
+      return site.story.paragraphs.length > 0 || !!site.story.quote?.trim();
+    }
+    if (link.id === "motivos") {
+      return site.qualities.items.length > 0;
+    }
+    if (link.id === "fotos") {
+      return site.gallery.photos.length > 0;
+    }
+    return true;
+  });
   const lines = couple.toNameLines;
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);

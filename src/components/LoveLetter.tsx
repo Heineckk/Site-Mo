@@ -4,6 +4,9 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import EmojiDisplay from "@/components/EmojiDisplay";
+import LetterClosing from "@/components/LetterClosing";
+import { isEmojiOnly } from "@/lib/emoji-display";
 import { useSite } from "@/contexts/SiteContext";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,6 +19,13 @@ export default function LoveLetter() {
   const heartRef = useRef<HTMLDivElement>(null);
 
   const paragraphs = letter.paragraphs;
+  const lastParagraph = paragraphs[paragraphs.length - 1];
+  const hasEmojiSignature =
+    paragraphs.length > 0 && isEmojiOnly(lastParagraph);
+  const bodyParagraphs = hasEmojiSignature
+    ? paragraphs.slice(0, -1)
+    : paragraphs;
+  const signatureEmoji = hasEmojiSignature ? lastParagraph.trim() : undefined;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,41 +81,45 @@ export default function LoveLetter() {
 
         <motion.div
           ref={letterRef}
-          className="glass glow-rose relative rounded-3xl p-10 md:p-14"
+          className="glass relative rounded-3xl p-10 shadow-[0_24px_80px_rgba(0,0,0,0.35)] md:p-14"
         >
           <div className="absolute top-0 left-0 h-1 w-full rounded-t-3xl bg-gradient-to-r from-rose via-gold to-rose-light" />
 
           <div className="space-y-6">
-            {paragraphs.map((text, i) => (
-              <motion.p
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                className={`leading-relaxed ${
-                  i === 0
-                    ? "font-[family-name:var(--font-playfair)] text-2xl text-rose-light italic"
-                    : i === paragraphs.length - 1
-                      ? "font-[family-name:var(--font-playfair)] text-xl text-gold-light italic"
-                      : "text-white/60"
-                }`}
-              >
-                {text}
-              </motion.p>
-            ))}
+            {bodyParagraphs.map((text, i) => {
+              if (isEmojiOnly(text)) {
+                return (
+                  <EmojiDisplay
+                    key={i}
+                    text={text}
+                    delay={i * 0.1}
+                  />
+                );
+              }
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="pt-4"
-            >
-              <p className="font-[family-name:var(--font-playfair)] text-3xl gradient-text md:text-4xl">
-                {letter.closing}
-              </p>
-            </motion.div>
+              return (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.6 }}
+                  className={`leading-relaxed ${
+                    i === 0
+                      ? "font-[family-name:var(--font-playfair)] text-2xl text-rose-light italic"
+                      : "text-white/60"
+                  }`}
+                >
+                  {text}
+                </motion.p>
+              );
+            })}
+
+            <LetterClosing
+              closing={letter.closing}
+              signature={signatureEmoji}
+              delay={bodyParagraphs.length * 0.1 + 0.2}
+            />
           </div>
         </motion.div>
       </motion.div>

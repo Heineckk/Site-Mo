@@ -9,6 +9,10 @@ export default function QualitiesSection() {
   const { qualities } = site;
   const gridRef = useRef<HTMLDivElement>(null);
 
+  if (!qualities.items.length) {
+    return null;
+  }
+
   return (
     <section
       id="motivos"
