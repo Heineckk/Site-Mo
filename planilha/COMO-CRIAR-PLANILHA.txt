@@ -34,3 +34,16 @@ DICA
 ----
 Preencha cada novo pedido na aba «Pedidos», linha 4 em diante.
 O Dashboard atualiza sozinho.
+
+
+DASHBOARD MOSTRA 0?
+-------------------
+1. Confira se os pedidos estão na aba «Pedidos» (não só no CSV).
+2. Preencha pelo menos a coluna «Cliente» — o total usa ela, não a Data.
+3. Status deve ser exatamente do menu: Aguardando pagamento, Pago, Em produção, Entregue ou Cancelado.
+4. Para corrigir uma planilha já criada:
+   - Abra a planilha no Google Sheets
+   - Extensões → Apps Script
+   - Cole o código atualizado de criar-planilha.gs
+   - Execute a função: atualizarDashboard
+   - Volte na aba Dashboard — os números devem aparecer.

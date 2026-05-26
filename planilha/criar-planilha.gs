@@ -37,6 +37,12 @@ var BRAND = {
   rowWhite: "#ffffff",
 };
 
+// Linhas de dados na aba Pedidos (linha 3 = cabeçalho, linha 4+ = pedidos)
+var PEDIDOS_HEADER_ROW = 3;
+var PEDIDOS_DATA_START = 4;
+var PEDIDOS_DATA_ROWS = 500;
+var PEDIDOS_DATA_END = PEDIDOS_DATA_START + PEDIDOS_DATA_ROWS - 1;
+
 /**
  * FUNÇÃO PRINCIPAL — roda quando você clica em Executar ▶
  * Cria a planilha inteira com 3 abas: Dashboard, Pedidos e Como usar
@@ -66,6 +72,31 @@ function criarPlanilhaControlePedidos() {
   Logger.log("Planilha criada com sucesso!");
   Logger.log("Abra em: " + url);
   return url;
+}
+
+/**
+ * Corrige o Dashboard de uma planilha JÁ EXISTENTE (aberta no Google Sheets).
+ * Extensões → Apps Script → cole este arquivo → Executar atualizarDashboard
+ */
+function atualizarDashboard() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var dashboard = ss.getSheetByName("Dashboard");
+  var pedidos = ss.getSheetByName("Pedidos");
+
+  if (!dashboard || !pedidos) {
+    throw new Error('Abas "Dashboard" e "Pedidos" são necessárias.');
+  }
+
+  var dataStart = detectPedidosDataStartRow_(pedidos);
+  applyDashboardFormulas_(dashboard, dataStart);
+
+  SpreadsheetApp.getUi().alert(
+    "Dashboard atualizado!\n\n" +
+      "Os pedidos são lidos a partir da linha " +
+      dataStart +
+      " da aba Pedidos.\n" +
+      "Se ainda aparecer 0, confira se a coluna Status usa exatamente os valores do menu (ex.: Em produção)."
+  );
 }
 
 /**
@@ -132,10 +163,10 @@ function setupPedidosSheet_(sheet) {
   }
 
   // Regras visuais e validações nas 500 linhas de dados (a partir da linha 4)
-  applyPedidosValidations_(sheet, 4, 500);   // menus dropdown (Status, Modelo, etc.)
-  applyPedidosFormats_(sheet, 4, 500);       // formato data e R$
-  applyPedidosConditionalFormatting_(sheet, 4, 500); // cores por status
-  applyPedidosBanding_(sheet, 3, lastCol, 500);      // linhas zebradas
+  applyPedidosValidations_(sheet, PEDIDOS_DATA_START, PEDIDOS_DATA_ROWS);   // menus dropdown (Status, Modelo, etc.)
+  applyPedidosFormats_(sheet, PEDIDOS_DATA_START, PEDIDOS_DATA_ROWS);       // formato data e R$
+  applyPedidosConditionalFormatting_(sheet, PEDIDOS_DATA_START, PEDIDOS_DATA_ROWS); // cores por status
+  applyPedidosBanding_(sheet, PEDIDOS_HEADER_ROW, lastCol, PEDIDOS_DATA_ROWS);      // linhas zebradas
 
   // Linha de exemplo — o cliente pode apagar depois de entender
   var exemplo = [
@@ -155,7 +186,7 @@ function setupPedidosSheet_(sheet) {
     "",
     "Linha de exemplo — pode apagar",
   ];
-  var exampleRange = sheet.getRange(4, 1, 1, exemplo.length);
+  var exampleRange = sheet.getRange(PEDIDOS_DATA_START, 1, 1, exemplo.length);
   exampleRange.setValues([exemplo]);
   exampleRange
     .setBackground("#fff8fb")
@@ -163,10 +194,10 @@ function setupPedidosSheet_(sheet) {
     .setFontColor("#888888");
 
   // Filtro no cabeçalho — permite buscar/filtrar pedidos por status, modelo, etc.
-  sheet.getRange(3, 1, 501, lastCol).createFilter();
+  sheet.getRange(PEDIDOS_HEADER_ROW, 1, PEDIDOS_DATA_ROWS + 1, lastCol).createFilter();
 
-  sheet.getRange(4, 1, 500, lastCol).setVerticalAlignment("middle");
-  sheet.getRange(4, 1, 500, lastCol).setWrapStrategy(SpreadsheetApp.WrapStrategy.WRAP);
+  sheet.getRange(PEDIDOS_DATA_START, 1, PEDIDOS_DATA_ROWS, lastCol).setVerticalAlignment("middle");
+  sheet.getRange(PEDIDOS_DATA_START, 1, PEDIDOS_DATA_ROWS, lastCol).setWrapStrategy(SpreadsheetApp.WrapStrategy.WRAP);
 
   protectHeaderArea_(sheet, lastCol); // Avisa se tentar apagar o cabeçalho
 }
@@ -189,78 +220,7 @@ function setupDashboardSheet_(ss, sheet) {
   sheet.setRowHeight(1, 44);
   sheet.setRowHeight(2, 26);
 
-  // Cards de KPI — cada "formula" lê dados da aba Pedidos em tempo real
-  var cards = [
-    { label: "TOTAL DE PEDIDOS", formula: "=COUNTA(Pedidos!A4:A)", color: BRAND.bgSoft },
-    {
-      label: "AGUARDANDO PAGAMENTO",
-      formula: '=COUNTIF(Pedidos!B4:B,"Aguardando pagamento")',
-      color: "#4a2040",
-    },
-    {
-      label: "EM PRODUÇÃO",
-      formula: '=COUNTIF(Pedidos!B4:B,"Em produção")',
-      color: "#3d3520",
-    },
-    {
-      label: "ENTREGUES",
-      formula: '=COUNTIF(Pedidos!B4:B,"Entregue")',
-      color: "#1e3d2f",
-    },
-  ];
-
-  for (var i = 0; i < cards.length; i++) {
-    var col = i * 2 + 1;
-    styleKpiCard_(sheet, 4, col, cards[i].label, cards[i].formula, cards[i].color);
-  }
-
-  // Faturamento: soma coluna Valor (F) onde Pago? (G) = "Sim"
-  styleKpiCardWide_(
-    sheet,
-    8,
-    1,
-    "FATURAMENTO (PEDIDOS PAGOS)",
-    '=SUMIF(Pedidos!G4:G,"Sim",Pedidos!F4:F)',
-    BRAND.bgSoft,
-    '"R$ "#,##0.00'
-  );
-
-  // Ticket médio dos pedidos pagos
-  styleKpiCardWide_(
-    sheet,
-    8,
-    5,
-    "TICKET MÉDIO",
-    '=IFERROR(AVERAGEIF(Pedidos!G4:G,"Sim",Pedidos!F4:F),0)',
-    "#3d3520",
-    '"R$ "#,##0.00'
-  );
-
-  sheet.getRange(12, 1).setValue("Pedidos por status");
-  styleSectionTitle_(sheet.getRange(12, 1));
-  sheet.getRange(12, 5).setValue("Pedidos por modelo");
-  styleSectionTitle_(sheet.getRange(12, 5));
-
-  // Tabelas auxiliares nas colunas J-M (ficam ocultas) — alimentam os gráficos
-  sheet.getRange(13, 10).setValue("Status");
-  sheet.getRange(13, 11).setValue("Qtd");
-  sheet.getRange(14, 10).setValue("Aguardando pagamento");
-  sheet.getRange(14, 11).setFormula('=COUNTIF(Pedidos!B4:B,"Aguardando pagamento")');
-  sheet.getRange(15, 10).setValue("Pago");
-  sheet.getRange(15, 11).setFormula('=COUNTIF(Pedidos!B4:B,"Pago")');
-  sheet.getRange(16, 10).setValue("Em produção");
-  sheet.getRange(16, 11).setFormula('=COUNTIF(Pedidos!B4:B,"Em produção")');
-  sheet.getRange(17, 10).setValue("Entregue");
-  sheet.getRange(17, 11).setFormula('=COUNTIF(Pedidos!B4:B,"Entregue")');
-  sheet.getRange(18, 10).setValue("Cancelado");
-  sheet.getRange(18, 11).setFormula('=COUNTIF(Pedidos!B4:B,"Cancelado")');
-
-  sheet.getRange(13, 12).setValue("Modelo");
-  sheet.getRange(13, 13).setValue("Qtd");
-  sheet.getRange(14, 12).setValue("Casal");
-  sheet.getRange(14, 13).setFormula('=COUNTIF(Pedidos!C4:C,"Casal")');
-  sheet.getRange(15, 12).setValue("Carta");
-  sheet.getRange(15, 13).setFormula('=COUNTIF(Pedidos!C4:C,"Carta")');
+  applyDashboardFormulas_(sheet, PEDIDOS_DATA_START);
 
   // Gráfico de pizza — distribuição por status
   var statusChart = sheet
@@ -315,6 +275,176 @@ function setupDashboardSheet_(ss, sheet) {
   sheet.setRowHeight(22, 28);
 }
 
+/**
+ * Aplica (ou corrige) todas as fórmulas do Dashboard.
+ * Conta pedidos pela coluna Cliente (D), não pela Data (A) — evita 0 quando a data está vazia.
+ */
+function applyDashboardFormulas_(sheet, dataStart) {
+  var dataEnd = dataStart + PEDIDOS_DATA_ROWS - 1;
+  var clienteCol = pedidosColRange_("D", dataStart, dataEnd);
+  var statusCol = pedidosColRange_("B", dataStart, dataEnd);
+  var modeloCol = pedidosColRange_("C", dataStart, dataEnd);
+  var valorCol = pedidosColRange_("F", dataStart, dataEnd);
+  var pagoCol = pedidosColRange_("G", dataStart, dataEnd);
+
+  var cards = [
+    {
+      label: "TOTAL DE PEDIDOS",
+      formula: formulaCountPedidos_(clienteCol),
+      color: BRAND.bgSoft,
+    },
+    {
+      label: "AGUARDANDO PAGAMENTO",
+      formula: formulaCountStatus_(statusCol, clienteCol, "Aguardando pagamento"),
+      color: "#4a2040",
+    },
+    {
+      label: "EM PRODUÇÃO",
+      formula: formulaCountStatus_(statusCol, clienteCol, "Em produção"),
+      color: "#3d3520",
+    },
+    {
+      label: "ENTREGUES",
+      formula: formulaCountStatus_(statusCol, clienteCol, "Entregue"),
+      color: "#1e3d2f",
+    },
+  ];
+
+  for (var i = 0; i < cards.length; i++) {
+    var col = i * 2 + 1;
+    styleKpiCard_(sheet, 4, col, cards[i].label, cards[i].formula, cards[i].color);
+  }
+
+  styleKpiCardWide_(
+    sheet,
+    8,
+    1,
+    "FATURAMENTO (PEDIDOS PAGOS)",
+    formulaSumPagos_(pagoCol, valorCol, clienteCol),
+    BRAND.bgSoft,
+    '"R$ "#,##0.00'
+  );
+
+  styleKpiCardWide_(
+    sheet,
+    8,
+    5,
+    "TICKET MÉDIO",
+    formulaTicketMedio_(pagoCol, valorCol, clienteCol),
+    "#3d3520",
+    '"R$ "#,##0.00'
+  );
+
+  sheet.getRange(12, 1).setValue("Pedidos por status");
+  styleSectionTitle_(sheet.getRange(12, 1));
+  sheet.getRange(12, 5).setValue("Pedidos por modelo");
+  styleSectionTitle_(sheet.getRange(12, 5));
+
+  sheet.getRange(13, 10).setValue("Status");
+  sheet.getRange(13, 11).setValue("Qtd");
+  sheet.getRange(14, 10).setValue("Aguardando pagamento");
+  sheet.getRange(14, 11).setFormula(formulaCountStatus_(statusCol, clienteCol, "Aguardando pagamento"));
+  sheet.getRange(15, 10).setValue("Pago");
+  sheet.getRange(15, 11).setFormula(formulaCountStatus_(statusCol, clienteCol, "Pago"));
+  sheet.getRange(16, 10).setValue("Em produção");
+  sheet.getRange(16, 11).setFormula(formulaCountStatus_(statusCol, clienteCol, "Em produção"));
+  sheet.getRange(17, 10).setValue("Entregue");
+  sheet.getRange(17, 11).setFormula(formulaCountStatus_(statusCol, clienteCol, "Entregue"));
+  sheet.getRange(18, 10).setValue("Cancelado");
+  sheet.getRange(18, 11).setFormula(formulaCountStatus_(statusCol, clienteCol, "Cancelado"));
+
+  sheet.getRange(13, 12).setValue("Modelo");
+  sheet.getRange(13, 13).setValue("Qtd");
+  sheet.getRange(14, 12).setValue("Casal");
+  sheet.getRange(14, 13).setFormula(formulaCountModelo_(modeloCol, clienteCol, "Casal"));
+  sheet.getRange(15, 12).setValue("Carta");
+  sheet.getRange(15, 13).setFormula(formulaCountModelo_(modeloCol, clienteCol, "Carta"));
+}
+
+/** Detecta em qual linha começam os pedidos (útil se a planilha foi importada de CSV) */
+function detectPedidosDataStartRow_(pedidosSheet) {
+  var scanRows = 12;
+  var values = pedidosSheet.getRange(1, 1, scanRows, 5).getValues();
+
+  for (var r = 0; r < values.length; r++) {
+    var statusHeader = String(values[r][1] || "")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+    if (statusHeader === "status") {
+      return r + 2;
+    }
+  }
+
+  return PEDIDOS_DATA_START;
+}
+
+function pedidosColRange_(columnLetter, startRow, endRow) {
+  return "Pedidos!" + columnLetter + startRow + ":" + columnLetter + endRow;
+}
+
+/** Conta linhas com Cliente preenchido (ignora linhas vazias e linha de exemplo sem nome) */
+function formulaCountPedidos_(clienteCol) {
+  return (
+    "=SUMPRODUCT((" +
+    clienteCol +
+    '<>"")*1)'
+  );
+}
+
+/** Conta status exato, só em linhas que têm Cliente preenchido */
+function formulaCountStatus_(statusCol, clienteCol, status) {
+  return (
+    '=SUMPRODUCT((' +
+    statusCol +
+    '="' +
+    status +
+    '")*(' +
+    clienteCol +
+    '<>"")*1)'
+  );
+}
+
+function formulaCountModelo_(modeloCol, clienteCol, modelo) {
+  return (
+    '=SUMPRODUCT((' +
+    modeloCol +
+    '="' +
+    modelo +
+    '")*(' +
+    clienteCol +
+    '<>"")*1)'
+  );
+}
+
+function formulaSumPagos_(pagoCol, valorCol, clienteCol) {
+  return (
+    "=SUMPRODUCT((" +
+    pagoCol +
+    '="Sim")*(' +
+    clienteCol +
+    '<>"")*' +
+    valorCol +
+    ")"
+  );
+}
+
+function formulaTicketMedio_(pagoCol, valorCol, clienteCol) {
+  return (
+    "=IFERROR(SUMPRODUCT((" +
+    pagoCol +
+    '="Sim")*(' +
+    clienteCol +
+    '<>"")*' +
+    valorCol +
+    ")/SUMPRODUCT((" +
+    pagoCol +
+    '="Sim")*(' +
+    clienteCol +
+    '<>"")*1),0)'
+  );
+}
+
 /** Aba com instruções rápidas para quem usa a planilha */
 function setupInstrucoesSheet_(sheet) {
   sheet.getRange(1, 1, 1, 4).merge();
@@ -328,6 +458,7 @@ function setupInstrucoesSheet_(sheet) {
     ["4.", "Entrega", "Preencha a data de entrega e o link final enviado ao cliente."],
     ["5.", "Dashboard", "A aba «Dashboard» mostra totais e gráficos automaticamente."],
     ["6.", "Filtros", "Na aba «Pedidos», use os filtros do cabeçalho para buscar pedidos."],
+    ["7.", "Dashboard zerado?", "Extensões → Apps Script → executar atualizarDashboard para corrigir as fórmulas."],
   ];
 
   sheet.getRange(3, 1, lines.length, 3).setValues(lines);

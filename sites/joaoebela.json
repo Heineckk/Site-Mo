@@ -1,0 +1,119 @@
+{
+  "slug": "joaoebela",
+  "meta": {
+    "title": "Isabela — Para Sempre",
+    "description": "Um presente de amor feito por João Moura para Isabela Zeni, com toda a história, carinho e gratidão de quem ama de verdade."
+  },
+  "couple": {
+    "fromName": "João",
+    "toName": "Isabela Zeni",
+    "toNameLines": ["Isabela", "❤️"],
+    "footerTagline": "Para sempre & além"
+  },
+  "quiz": {
+    "questions": []
+  },
+  "quizGate": {
+    "eyebrow": "Um segredinho",
+    "titleLine1": "ama de verdade",
+    "titleLine2": "entra aqui",
+    "subtitle": "Responda com carinho — são coisas só nossas",
+    "successTitle": "Perfeito, meu amor!",
+    "successSubtitle": "Abrindo seu presente...",
+    "footerCredit": "Feito com amor pelo João, para Isabela"
+  },
+  "hero": {
+    "eyebrow": "Feito com amor, só para você",
+    "subtitle": "Minha vida! Sabe que às vezes não consigo expressar meus sentimentos em cartas, mas que demonstro em formas de cuidado e carinho. Mas vou ser muito sincero e verdadeiro em minhas palavras."
+  },
+  "story": {
+    "sectionLabel": "Capítulo Um",
+    "titleHighlight": "História",
+    "paragraphs": [
+      "Primeiramente quero agradecer por tudo que está fazendo por nós, pela forma que você se molda a nossas rotinas aos cuidados com as meninas, e a atenção e dedicação que sempre tem quando temos nossas noites a sós. E dizer que desde aquele dia 24/12 eu sou um homem mais feliz todos os dias!",
+      "Deus sabe quão alegre sou em ter você na minha vida, oro por nós todos os dias, para que venhamos vencer toda a inveja e lutas juntos, eu amo você com toda verdade que existe em mim, e admiro a mulher que você é em todos os aspectos.",
+      "Quero que entenda que eu te escolhi, e te escolho todos os dias para ser minha mulher, minha futura esposa. E toda dificuldade não vai ser nada perto da nossa união, da nossa parceria que temos desde o primeiro dia juntos. Nunca nem nada vai me distrair e tirar a atenção do nosso relacionamento, por que quero ser o homem perfeito para você e ser um homem que Deus te preparou! Eu amo você hoje e sempre!"
+    ],
+    "quote": "Amo você em todos os momentos, até nos mais difíceis eu vou estar lá ❤️"
+  },
+  "qualities": {
+    "sectionLabel": "Por que eu te amo",
+    "titleHighlight": "por Amar",
+    "subtitle": "Motivos que me fazem ser um homem feliz por ter você!",
+    "items": [
+      {
+        "icon": "✦",
+        "title": "A forma como me escuta de verdade"
+      },
+      {
+        "icon": "♡",
+        "title": "Como sempre quer estar bem arrumada"
+      },
+      {
+        "icon": "†",
+        "title": "Como tem buscado a Deus comigo"
+      },
+      {
+        "icon": "◈",
+        "title": "Pela forma que cuida das meninas com igualdade"
+      },
+      {
+        "icon": "★",
+        "title": "O respeito que tem pela minha família"
+      },
+      {
+        "icon": "☽",
+        "title": "Por incentivar a seu um homem melhor todos os dias"
+      },
+      {
+        "icon": "✧",
+        "title": "Por ser essa mulher dedica em seus afazeres e trabalhos"
+      },
+      {
+        "icon": "∞",
+        "title": "Por confiar emocionalmente em mim e abrir seu coração quanto precisa"
+      },
+      {
+        "icon": "❋",
+        "title": "Eu poderia ficar um dia escrevendo quantas coisas eu vejo em você que me fazem te amar."
+      }
+    ]
+  },
+  "gallery": {
+    "sectionLabel": "Nossos Momentos",
+    "titleHighlight": "Nosso Amor",
+    "subtitle": "Clique em qualquer foto para ver em tela cheia.",
+    "photos": [
+      {
+        "src": "/sites/joaoebela/photos/01.png",
+        "alt": "João e Isabela em selfie na primeira viagem juntos",
+        "title": "Nossa Primeira Viagem",
+        "caption": "Nossa primeira viagem juntos, onde foi especial pra mim 🖤",
+        "featured": true
+      },
+      {
+        "src": "/sites/joaoebela/photos/02.png",
+        "alt": "João e Isabela na academia",
+        "title": "Nossa Melhor Versão",
+        "caption": "Onde você me trás minha melhor versão"
+      },
+      {
+        "src": "/sites/joaoebela/photos/03.png",
+        "alt": "João, Isabela e as meninas em família",
+        "title": "Nossa Família",
+        "caption": "A nossa riqueza! Nossa família que eu amo demais ❤️"
+      }
+    ]
+  },
+  "letter": {
+    "sectionLabel": "De coração para coração",
+    "titleHighlight": "Amor",
+    "paragraphs": [
+      "Minha vida, Isabela,",
+      "Motivos que me fazem ser um homem feliz por ter você! Eu poderia ficar um dia escrevendo quantas coisas eu vejo em você que me fazem te amar.",
+      "Desde aquele dia 24/12, cada escolha minha te inclui — hoje, amanhã e sempre. Quero ser o homem que Deus preparou para você.",
+      "Eu amo você hoje e sempre!"
+    ],
+    "closing": "Com todo meu amor ♥"
+  }
+}
